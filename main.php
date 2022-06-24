@@ -41,9 +41,11 @@ class Image
     }
 }
 
-class Scene {
+class Scene
+{
     public array $objects;
-    function __construct() {
+    function __construct()
+    {
         $this->objects = [];
     }
 }
@@ -78,9 +80,9 @@ class Camera
         $this->horizontal = $u->scale(-$viewport_width);
         $this->vertical = $v->scale($viewport_height);
         $this->lower_left_corner = new vec3(
-            $origin ->x - $this->horizontal->x / 2 - $this->vertical->x / 2 - $w->x,
-            $origin ->y - $this->horizontal->y / 2 - $this->vertical->y / 2 - $w->y,
-            $origin ->z - $this->horizontal->z / 2 - $this->vertical->z / 2 - $w->z,
+            $origin->x - $this->horizontal->x / 2 - $this->vertical->x / 2 - $w->x,
+            $origin->y - $this->horizontal->y / 2 - $this->vertical->y / 2 - $w->y,
+            $origin->z - $this->horizontal->z / 2 - $this->vertical->z / 2 - $w->z,
         );
     }
 
@@ -110,7 +112,8 @@ function bg_color(Ray $r)
     );
 }
 
-function render(Ray $ray, Scene $scene) {
+function render(Ray $ray, Scene $scene)
+{
     $hit = false;
     $isect = new Intersection();
     foreach ($scene->objects as $object) {
@@ -130,7 +133,11 @@ function main()
     parse_obj("./corpse.obj", $scene);
 
     $camera = new Camera(
-        WIDTH, HEIGHT, new vec3(7, 7, 7), new vec3(-1, -1, -1), 30.0
+        WIDTH,
+        HEIGHT,
+        new vec3(7, 7, 7),
+        new vec3(-1, -1, -1),
+        30.0
     );
 
     $image = new Image(WIDTH, HEIGHT);

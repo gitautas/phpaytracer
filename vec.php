@@ -75,8 +75,10 @@ abstract class vec implements \ArrayAccess
     }
 
     public function offsetSet($offset, $value)
-    { }
+    {
+    }
 
     public function offsetUnset($offset)
-    { }
+    {
+    }
 }

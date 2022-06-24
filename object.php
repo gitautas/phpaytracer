@@ -2,36 +2,40 @@
 
 const EPSILON = 0.0000001;
 
-class Intersection {
+class Intersection
+{
     public float $t = INF;
     public Obj $obj;
     public vec3 $normal;
 }
 
-class Obj {
-
+class Obj
+{
 }
 
-class Triangle extends Obj {
+class Triangle extends Obj
+{
     public vec3 $p0;
     public vec3 $p1;
     public vec3 $p2;
     public vec3 $color;
 
-    function __construct($p0, $p1, $p2, $color) {
+    function __construct($p0, $p1, $p2, $color)
+    {
         $this->p0 = $p0;
         $this->p1 = $p1;
         $this->p2 = $p2;
         $this->color = $color;
     }
 
-    public function intersect(Ray $r, Intersection &$intersection) {
+    public function intersect(Ray $r, Intersection &$intersection)
+    {
         $edge1 = $this->p1->subtract($this->p0);
         $edge2 = $this->p2->subtract($this->p0);
 
         $h = $r->direction->cross($edge2);
         $a = $edge1->dot($h);
-        if ( $a > -EPSILON && $a < EPSILON ) {
+        if ($a > -EPSILON && $a < EPSILON) {
             return false;
         }
 
@@ -68,18 +72,21 @@ class Triangle extends Obj {
     }
 }
 
-class Sphere extends Obj {
+class Sphere extends Obj
+{
     public vec3 $position;
     public vec3 $color;
     public float $radius;
 
-    function __construct($position, $radius, $color) {
+    function __construct($position, $radius, $color)
+    {
         $this->position = $position;
         $this->color = $color;
         $this->radius = $radius;
     }
 
-    function intersect(Ray $r, Intersection &$intersection) {
+    function intersect(Ray $r, Intersection &$intersection)
+    {
         $oc = new vec3(
             $r->origin->x - $this->position->x,
             $r->origin->y - $this->position->y,

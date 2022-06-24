@@ -1,6 +1,7 @@
 <?php
 
-function parse_obj(string $filename, Scene &$scene) {
+function parse_obj(string $filename, Scene &$scene)
+{
     $file = fopen($filename, "r");
     $vertices = [];
 
