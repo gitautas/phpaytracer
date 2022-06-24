@@ -2,3 +2,4 @@
 
 * Why
 Wanted to write something in a bad language to try PHP
+[[./image.png]]

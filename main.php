@@ -75,7 +75,6 @@ class Camera
         $u = $up->cross($w)->normalize();
         $v = $w->cross($u);
 
-
         $this->horizontal = $u->scale(-$viewport_width);
         $this->vertical = $v->scale($viewport_height);
         $this->lower_left_corner = new vec3(
@@ -127,19 +126,9 @@ function render(Ray $ray, Scene $scene) {
 
 function main()
 {
-    // $sphere = new Sphere(new vec3(0, 0, -1), 0.5, new vec3(0, 0, 0));
-    // $tri = new Triangle(
-    //     new vec3(0, 1, -10),
-    //     new vec3(-1, 0, -10),
-    //     new vec3(1, 0, -10),
-    //     new vec3(1, 0.75, 0.79)
-    // );
-
     $scene = new Scene();
     parse_obj("./corpse.obj", $scene);
 
-    // array_push($scene->objects, $tri, $sphere);
-    // Render
     $camera = new Camera(
         WIDTH, HEIGHT, new vec3(7, 7, 7), new vec3(-1, -1, -1), 30.0
     );
